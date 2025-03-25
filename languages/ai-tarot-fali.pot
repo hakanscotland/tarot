@@ -1,0 +1,388 @@
+# Copyright (C) 2025 Website Sahibi
+# This file is distributed under the same license as the AI Tarot Falı plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: AI Tarot Falı 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ai-tarot-fali\n"
+"POT-Creation-Date: 2025-03-25T12:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: ai-tarot\n"
+
+#. Plugin Name of the plugin
+msgid "AI Tarot Falı"
+msgstr ""
+
+#. Description of the plugin
+msgid "Yapay zeka destekli interaktif tarot falı eklentisi"
+msgstr ""
+
+#. Author of the plugin
+msgid "Website Sahibi"
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:83
+msgid "Bu öğeyi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:84
+msgid "Seçilen öğeleri silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:303
+msgid "Kart başarıyla güncellendi."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:310
+msgid "Kart güncellenirken bir hata oluştu."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:324
+msgid "Kart başarıyla eklendi."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:331
+msgid "Kart eklenirken bir hata oluştu."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:356
+msgid "Kart başarıyla silindi."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:361
+msgid "Kart silinirken bir hata oluştu."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:459
+msgid "Fal geçmişi başarıyla silindi."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:464
+msgid "Fal geçmişi silinirken bir hata oluştu."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:631
+msgid "%d kart görseli başarıyla güncellendi. %d güncelleme başarısız oldu."
+msgstr ""
+
+#: admin/class-ai-tarot-admin.php:712
+msgid "%d eksik kart eklendi."
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:65
+msgid "Lütfen bir soru sorun veya niyet belirtin."
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:111
+msgid "Tarot falı oluşturulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:199
+msgid "Kullanıcı giriş yapmamış"
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:217
+msgid "Okuma bulunamadı"
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:227
+msgid "Okuma başarıyla kaydedildi"
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:229
+msgid "Okuma kaydedilirken bir hata oluştu"
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:244
+msgid "Otomatik kayıt devre dışı"
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:262
+msgid "Okuma bulunamadı"
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:272
+msgid "Okuma başarıyla kaydedildi"
+msgstr ""
+
+#: includes/class-ai-tarot-backend.php:274
+msgid "Okuma kaydedilirken bir hata oluştu"
+msgstr ""
+
+#: includes/class-ai-tarot-frontend.php:54
+msgid "Tarot falınız hazırlanıyor..."
+msgstr ""
+
+#: includes/class-ai-tarot-frontend.php:55
+msgid "Tarot falı oluşturulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+msgstr ""
+
+#: includes/class-ai-tarot-frontend.php:56
+msgid "Tarot falınız başarıyla kaydedildi!"
+msgstr ""
+
+#: includes/class-ai-tarot-frontend.php:57
+msgid "Tarot falı kaydedilirken bir hata oluştu."
+msgstr ""
+
+#: includes/class-ai-tarot-frontend.php:58
+msgid "Falınızı kaydetmek için lütfen giriş yapın."
+msgstr ""
+
+#: includes/class-ai-tarot-frontend.php:59
+msgid "Açılım Bilgilerini Göster"
+msgstr ""
+
+#: includes/class-ai-tarot-frontend.php:60
+msgid "Açılım Bilgilerini Gizle"
+msgstr ""
+
+#: public/partials/tarot-form.php:16
+msgid "AI Tarot Falı"
+msgstr ""
+
+#: public/partials/tarot-form.php:17
+msgid "Sorunuzu sorun ve açılım türünü seçin. Yapay zeka destekli tarot falı size içgörüler sunacaktır."
+msgstr ""
+
+#: public/partials/tarot-form.php:21
+msgid "Soru veya Niyet:"
+msgstr ""
+
+#: public/partials/tarot-form.php:22
+msgid "Tarot'a sormak istediğiniz soruyu yazın..."
+msgstr ""
+
+#: public/partials/tarot-form.php:26
+msgid "Açılım Türü:"
+msgstr ""
+
+#: public/partials/tarot-form.php:28
+msgid "Üç Kartlık Açılım"
+msgstr ""
+
+#: public/partials/tarot-form.php:29
+msgid "Kelt Haçı Açılımı"
+msgstr ""
+
+#: public/partials/tarot-form.php:30
+msgid "Astrolojik Açılım"
+msgstr ""
+
+#: public/partials/tarot-form.php:38
+msgid "Kart çekme animasyonlarını etkinleştir"
+msgstr ""
+
+#: public/partials/tarot-form.php:44
+msgid "Tarot Falı Çek"
+msgstr ""
+
+#: public/partials/tarot-form.php:50
+msgid "Falınızı kaydetmek ve geçmiş fallarınıza erişmek için"
+msgstr ""
+
+#: public/partials/tarot-form.php:50
+msgid "giriş yapın"
+msgstr ""
+
+#: public/partials/tarot-form.php:56
+#: public/partials/tarot-form.php:62
+msgid "Tarot Falı Hakkında"
+msgstr ""
+
+#: public/partials/tarot-form.php:63
+msgid "Tarot falı, kişisel içgörüler ve rehberlik sağlayan geleneksel bir metottur. AI Tarot, yapay zeka teknolojisini kullanarak tarot kart açılımlarınızı yorumlar."
+msgstr ""
+
+#: public/partials/tarot-form.php:64
+msgid "En iyi sonuçlar için, açık ve net bir soru sorun veya bir niyet belirtin."
+msgstr ""
+
+#: public/partials/tarot-form.php:76
+msgid "Tarot falınız hazırlanıyor..."
+msgstr ""
+
+#: public/partials/tarot-form.php:83
+msgid "Üç Kartlık Açılım"
+msgstr ""
+
+#: public/partials/tarot-form.php:84
+msgid "Bu basit açılım, geçmiş, şimdi ve gelecek temalarını temsil eden üç kart içerir. Belirli bir durum hakkında hızlı bir bakış sağlar."
+msgstr ""
+
+#: public/partials/tarot-form.php:86
+msgid "İlk Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:86
+msgid "Geçmiş - Sizi bugüne getiren etkiler"
+msgstr ""
+
+#: public/partials/tarot-form.php:87
+msgid "İkinci Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:87
+msgid "Şimdi - Mevcut durumunuz"
+msgstr ""
+
+#: public/partials/tarot-form.php:88
+msgid "Üçüncü Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:88
+msgid "Gelecek - Olası bir sonuç"
+msgstr ""
+
+#: public/partials/tarot-form.php:93
+msgid "Kelt Haçı Açılımı"
+msgstr ""
+
+#: public/partials/tarot-form.php:94
+msgid "Kelt Haçı, en popüler ve kapsamlı tarot açılımlarından biridir. Bir duruma derinlemesine bakış sağlar."
+msgstr ""
+
+#: public/partials/tarot-form.php:96
+msgid "1. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:96
+msgid "Mevcut Durum - Sizi etkileyen ana faktör"
+msgstr ""
+
+#: public/partials/tarot-form.php:97
+msgid "2. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:97
+msgid "Zorluk - Karşılaştığınız engel"
+msgstr ""
+
+#: public/partials/tarot-form.php:98
+msgid "3. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:98
+msgid "Bilinçaltı - Altta yatan etkenler"
+msgstr ""
+
+#: public/partials/tarot-form.php:99
+msgid "4. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:99
+msgid "Geçmiş - Yakın geçmişteki etkiler"
+msgstr ""
+
+#: public/partials/tarot-form.php:100
+msgid "5. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:100
+msgid "Olası Sonuç - Mevcut yolunuzda ilerlerseniz"
+msgstr ""
+
+#: public/partials/tarot-form.php:101
+msgid "6. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:101
+msgid "Yakın Gelecek - Önümüzdeki günlerde"
+msgstr ""
+
+#: public/partials/tarot-form.php:102
+msgid "7. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:102
+msgid "Kendiniz - Duruma yaklaşımınız"
+msgstr ""
+
+#: public/partials/tarot-form.php:103
+msgid "8. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:103
+msgid "Dış Etkiler - Çevreniz ve diğer insanlar"
+msgstr ""
+
+#: public/partials/tarot-form.php:104
+msgid "9. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:104
+msgid "Umutlar/Korkular - İçsel dilekler ve endişeler"
+msgstr ""
+
+#: public/partials/tarot-form.php:105
+msgid "10. Kart:"
+msgstr ""
+
+#: public/partials/tarot-form.php:105
+msgid "Sonuç - Nihai sonuç"
+msgstr ""
+
+#: public/partials/tarot-form.php:110
+msgid "Astrolojik Açılım"
+msgstr ""
+
+#: public/partials/tarot-form.php:111
+msgid "Astrolojik açılım, 12 astrolojik evi temsil eden kartlarla yaşamınızın farklı alanlarını inceler."
+msgstr ""
+
+#: public/partials/tarot-form.php:113
+msgid "1. Ev:"
+msgstr ""
+
+#: public/partials/tarot-form.php:113
+msgid "Kendiniz - Kişiliğiniz ve görünüşünüz"
+msgstr ""
+
+#: public/partials/tarot-form.php:114
+msgid "2. Ev:"
+msgstr ""
+
+#: public/partials/tarot-form.php:114
+msgid "Değerler - Finansal durumunuz ve varlıklarınız"
+msgstr ""
+
+#: public/partials/tarot-form.php:115
+msgid "3. Ev:"
+msgstr ""
+
+#: public/partials/tarot-form.php:115
+msgid "İletişim - İletişim tarzınız ve yakın çevre"
+msgstr ""
+
+#: public/partials/tarot-form.php:116
+msgid "4. Ev:"
+msgstr ""
+
+#: public/partials/tarot-form.php:116
+msgid "Yuva - Aileniz ve kökenleriniz"
+msgstr ""
+
+#: public/partials/tarot-form.php:117
+msgid "5. Ev:"
+msgstr ""
+
+#: public/partials/tarot-form.php:117
+msgid "Yaratıcılık - Kendini ifade ve eğlence"
+msgstr ""
+
+#: public/partials/tarot-form.php:118
+msgid "6. Ev:"
+msgstr ""
+
+#: public/partials/tarot-form.php:118
+msgid "Sağlık - Günlük rutinler ve sağlık"
+msgstr ""
+
+#: public/

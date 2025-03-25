@@ -1,28 +1,190 @@
 <?php
 /**
  * Plugin Name: AI Tarot Falı
+ * Plugin URI: https://secondmedia.co.uk/ai-tarot-fali
  * Description: Yapay zeka destekli interaktif tarot falı eklentisi
- * Version: 1.0
- * Author: Website Sahibi
+ * Version: 1.0.1
+ * Author: Hakan Dag
+ * Author URI: https://secondmedia.co.uk
  * Text Domain: ai-tarot
+ * Domain Path: /languages
+ * License: GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-// Güvenlik kontrolü
+// Güvenlik kontrolü - doğrudan erişimi engelle
 if (!defined('ABSPATH')) {
     exit;
 }
 
-// Sabit değişkenler
-define('AI_TAROT_VERSION', '1.0');
+// Sabit değişkenler tanımla
+define('AI_TAROT_VERSION', '1.0.0');
 define('AI_TAROT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('AI_TAROT_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('AI_TAROT_PLUGIN_BASENAME', plugin_basename(__FILE__));
+define('AI_TAROT_PLUGIN_FILE', __FILE__);
 
-// Ana sınıfı dahil et
-require_once AI_TAROT_PLUGIN_DIR . 'includes/class-ai-tarot.php';
+/**
+ * Eklenti yüklendiğinde gerekli dosyaları dahil et
+ */
+function ai_tarot_load_dependencies() {
+    // Ana sınıfı dahil et
+    require_once AI_TAROT_PLUGIN_DIR . 'includes/class-ai-tarot.php';
+    
+    // Aktivasyon ve deactivation sınıfları
+    require_once AI_TAROT_PLUGIN_DIR . 'includes/class-ai-tarot-activator.php';
+    require_once AI_TAROT_PLUGIN_DIR . 'includes/class-ai-tarot-deactivator.php';
+}
 
-// Eklentiyi başlat
-function run_ai_tarot() {
+/**
+ * Eklenti yüklendiğinde çalış
+ */
+function ai_tarot_init() {
+    // Dil dosyalarını yükle
+    load_plugin_textdomain('ai-tarot', false, dirname(AI_TAROT_PLUGIN_BASENAME) . '/languages');
+    
+    // Bağımlılıkları yükle
+    ai_tarot_load_dependencies();
+    
+    // Eklentiyi başlat
     $plugin = new AI_Tarot();
     $plugin->run();
 }
-run_ai_tarot();
+add_action('plugins_loaded', 'ai_tarot_init');
+
+/**
+ * Eklenti etkinleştirildiğinde çalışacak fonksiyon
+ */
+function ai_tarot_activate() {
+    // Bağımlılıkları yükle
+    ai_tarot_load_dependencies();
+    
+    // Aktivasyon fonksiyonunu çağır
+    AI_Tarot_Activator::activate();
+}
+register_activation_hook(__FILE__, 'ai_tarot_activate');
+
+/**
+ * Eklenti devre dışı bırakıldığında çalışacak fonksiyon
+ */
+function ai_tarot_deactivate() {
+    // Bağımlılıkları yükle
+    ai_tarot_load_dependencies();
+    
+    // Deaktivasyon fonksiyonunu çağır
+    AI_Tarot_Deactivator::deactivate();
+}
+register_deactivation_hook(__FILE__, 'ai_tarot_deactivate');
+
+/**
+ * Eklenti kaldırıldığında çalışacak fonksiyon
+ */
+function ai_tarot_uninstall() {
+    // Uninstall fonksiyonu doğrudan buradan çağrılmaz,
+    // uninstall.php dosyası WordPress tarafından otomatik çağrılır
+}
+
+/**
+ * Admin bildirimlerini göster
+ */
+function ai_tarot_admin_notices() {
+    // Eklenti etkinleştirildikten sonra bildirim göster
+    if (get_transient('ai_tarot_activation_notice')) {
+        ?>
+        <div class="notice notice-success is-dismissible">
+            <p><?php _e('AI Tarot Falı eklentisi başarıyla etkinleştirildi! Ayarlar sayfasından API anahtarınızı yapılandırmalısınız.', 'ai-tarot'); ?></p>
+            <p><a href="<?php echo admin_url('admin.php?page=ai-tarot-settings'); ?>" class="button button-primary"><?php _e('Ayarlar\'a Git', 'ai-tarot'); ?></a></p>
+        </div>
+        <?php
+        // Bildirimi bir kez göster
+        delete_transient('ai_tarot_activation_notice');
+    }
+    
+    // API anahtarı eksik uyarısı
+    $settings = get_option('ai_tarot_settings', array());
+    $api_service = isset($settings['ai_service']) ? $settings['ai_service'] : 'openai';
+    $api_key_name = $api_service . '_api_key';
+    
+    if (empty($settings[$api_key_name]) && current_user_can('manage_options')) {
+        ?>
+        <div class="notice notice-warning">
+            <p><?php printf(__('AI Tarot Falı eklentisi için %s API anahtarı belirtilmemiş! Tarot falları oluşturabilmek için API anahtarını yapılandırmalısınız.', 'ai-tarot'), ucfirst($api_service)); ?></p>
+            <p><a href="<?php echo admin_url('admin.php?page=ai-tarot-settings'); ?>" class="button button-primary"><?php _e('Ayarlar\'a Git', 'ai-tarot'); ?></a></p>
+        </div>
+        <?php
+    }
+}
+add_action('admin_notices', 'ai_tarot_admin_notices');
+
+/**
+ * Plugin row meta ekle
+ */
+function ai_tarot_plugin_row_meta($links, $file) {
+    if (AI_TAROT_PLUGIN_BASENAME === $file) {
+        $row_meta = array(
+            'docs'    => '<a href="' . esc_url('https://example.com/ai-tarot-docs') . '" target="_blank" aria-label="' . esc_attr__('Dokümantasyon', 'ai-tarot') . '">' . esc_html__('Dokümantasyon', 'ai-tarot') . '</a>',
+            'support' => '<a href="' . esc_url('https://example.com/ai-tarot-support') . '" target="_blank" aria-label="' . esc_attr__('Destek', 'ai-tarot') . '">' . esc_html__('Destek', 'ai-tarot') . '</a>',
+        );
+
+        return array_merge($links, $row_meta);
+    }
+
+    return $links;
+}
+add_filter('plugin_row_meta', 'ai_tarot_plugin_row_meta', 10, 2);
+
+/**
+ * Action links ekle (Ayarlar vb.)
+ */
+function ai_tarot_action_links($links) {
+    $settings_link = '<a href="' . admin_url('admin.php?page=ai-tarot-settings') . '">' . __('Ayarlar', 'ai-tarot') . '</a>';
+    array_unshift($links, $settings_link);
+    return $links;
+}
+add_filter('plugin_action_links_' . AI_TAROT_PLUGIN_BASENAME, 'ai_tarot_action_links');
+
+/**
+ * Kısa kodu kaydet
+ */
+function ai_tarot_shortcode($atts = array()) {
+    // Kısa kod özniteliklerini hazırla
+    $attributes = shortcode_atts(array(
+        'theme' => 'light',
+        'default_spread' => 'three_card',
+        'show_animations' => 'true',
+        'allow_save' => 'true',
+        'help_text' => ''
+    ), $atts);
+    
+    // Frontend sınıfını yükle
+    require_once AI_TAROT_PLUGIN_DIR . 'includes/class-ai-tarot-frontend.php';
+    $frontend = new AI_Tarot_Frontend();
+    
+    // Tarot formunu render et
+    return $frontend->render_tarot_form($attributes);
+}
+add_shortcode('ai_tarot', 'ai_tarot_shortcode');
+
+/**
+ * Widget desteği
+ */
+function ai_tarot_register_widgets() {
+    // Widget sınıfını dahil et
+    require_once AI_TAROT_PLUGIN_DIR . 'includes/class-ai-tarot-widget.php';
+    
+    // Widget'ı kaydet
+    register_widget('AI_Tarot_Widget');
+}
+add_action('widgets_init', 'ai_tarot_register_widgets');
+
+/**
+ * Özel CSS yükle
+ */
+function ai_tarot_custom_css() {
+    $settings = get_option('ai_tarot_settings', array());
+    
+    if (isset($settings['custom_css']) && !empty($settings['custom_css'])) {
+        echo '<style type="text/css">' . wp_strip_all_tags($settings['custom_css']) . '</style>';
+    }
+}
+add_action('wp_head', 'ai_tarot_custom_css');

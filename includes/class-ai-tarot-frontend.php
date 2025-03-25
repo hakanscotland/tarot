@@ -63,7 +63,10 @@ class AI_Tarot_Frontend {
                 'error_text' => __('Tarot falı oluşturulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin.', 'ai-tarot'),
                 'save_success' => __('Tarot falınız başarıyla kaydedildi!', 'ai-tarot'),
                 'save_error' => __('Tarot falı kaydedilirken bir hata oluştu.', 'ai-tarot'),
-                'login_required' => __('Falınızı kaydetmek için lütfen giriş yapın.', 'ai-tarot')
+                'login_required' => __('Falınızı kaydetmek için lütfen giriş yapın.', 'ai-tarot'),
+
+                'spread_info_show_text' => __('Açılım Bilgilerini Göster', 'ai-tarot'),
+                'spread_info_hide_text' => __('Açılım Bilgilerini Gizle', 'ai-tarot')
             )
         );
     }

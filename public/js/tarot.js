@@ -624,4 +624,217 @@ jQuery(document).ready(function($) {
             scrollTop: $('#tarot-form-container').offset().top - 50
         }, 500);
     }
+
+        // Açılım türü değiştiğinde bilgi bölümünü güncelle
+    $('#tarot-spread').on('change', function() {
+        updateSpreadInfo($(this).val());
+    });
+
+    // Sayfa yüklendiğinde mevcut açılım bilgisini göster
+    updateSpreadInfo($('#tarot-spread').val());
+
+    // Açılım bilgilerini göster/gizle düğmesi
+    $('#toggle-spread-info').on('click', function() {
+        $('.spread-info').slideToggle();
+        
+        if ($(this).text() === ai_tarot_vars.spread_info_show_text) {
+            $(this).text(ai_tarot_vars.spread_info_hide_text);
+        } else {
+            $(this).text(ai_tarot_vars.spread_info_show_text);
+        }
+    });
+
+    // Açılım bilgisini güncelle
+    function updateSpreadInfo(spreadType) {
+        // Tüm açılım bilgilerini gizle
+        $('.spread-info').hide();
+        
+        // Seçilen açılım türüne göre ilgili bilgiyi göster
+        switch(spreadType) {
+            case 'three_card':
+                $('#three-card-info').show();
+                break;
+            case 'celtic_cross':
+                $('#celtic-cross-info').show();
+                break;
+            case 'astrological':
+                $('#astrological-info').show();
+                break;
+        }
+    }
+
+    // Animasyon ayarı değiştiğinde
+    $('#enable-animations').on('change', function() {
+        if ($(this).is(':checked')) {
+            ai_tarot_vars.enable_animations = 1;
+        } else {
+            ai_tarot_vars.enable_animations = 0;
+        }
+    });
+
+    // URL parametrelerini kontrol et
+    const urlParams = new URLSearchParams(window.location.search);
+    const questionParam = urlParams.get('question');
+    const spreadParam = urlParams.get('spread');
+
+    // URL'den gelen parametreleri forma doldur
+    if (questionParam) {
+        $('#tarot-question').val(decodeURIComponent(questionParam));
+    }
+
+    if (spreadParam && ['three_card', 'celtic_cross', 'astrological'].includes(spreadParam)) {
+        $('#tarot-spread').val(spreadParam);
+        updateSpreadInfo(spreadParam);
+    }
+
+    // Eğer hem soru hem de açılım türü varsa otomatik başlat
+    if (questionParam && spreadParam && urlParams.get('autostart') === '1') {
+        setTimeout(function() {
+            $('#tarot-form').submit();
+        }, 1000);
+    }
+
+    // İpucu göster/gizle
+    $('.tarot-help-text h3').on('click', function() {
+        $(this).next('p').slideToggle();
+    });
+
+    // ********************************************
+    // ******* TAROT SONUÇLARI İŞLEMLERİ *********
+    // ********************************************
+    
+    // Falı kaydet
+    $('.save-reading-button').on('click', function() {
+        var readingId = $(this).data('reading-id');
+        
+        // AJAX isteği
+        $.ajax({
+            url: ai_tarot_vars.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'save_tarot_reading',
+                reading_id: readingId,
+                nonce: ai_tarot_vars.nonce
+            },
+            success: function(response) {
+                if (response.success) {
+                    showMessage(ai_tarot_vars.save_success, 'success');
+                } else {
+                    showMessage(ai_tarot_vars.save_error, 'error');
+                }
+            },
+            error: function() {
+                showMessage(ai_tarot_vars.save_error, 'error');
+            }
+        });
+    });
+    
+    // Yazdır düğmesi
+    $('.print-reading-button').on('click', function() {
+        window.print();
+    });
+    
+    // Paylaşım düğmeleri
+    $('.share-facebook').on('click', function() {
+        var url = $(this).data('url');
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), 
+                    'facebook-share', 'width=580,height=520');
+        return false;
+    });
+    
+    $('.share-twitter').on('click', function() {
+        var url = $(this).data('url');
+        var text = $(this).data('text');
+        window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + 
+                   '&url=' + encodeURIComponent(url), 
+                   'twitter-share', 'width=550,height=420');
+        return false;
+    });
+    
+    $('.share-email').on('click', function() {
+        var subject = $(this).data('subject');
+        var body = $(this).data('body');
+        window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + 
+                               '&body=' + encodeURIComponent(body);
+        return false;
+    });
+    
+    // Kart detaylarını göster/gizle
+    $('.card-box').on('click', function() {
+        $(this).toggleClass('expanded');
+    });
+    
+    // Kart hover efekti
+    $('.card-box').hover(
+        function() {
+            $(this).addClass('card-hover');
+        },
+        function() {
+            $(this).removeClass('card-hover');
+        }
+    );
+    
+    // İlgili falları göster/gizle
+    $('.related-readings h3').on('click', function() {
+        $(this).next('.related-readings-list').slideToggle();
+        $(this).toggleClass('collapsed');
+    });
+    
+    // Yorumu yazdırma formatı düzenlemeleri
+    function printReadingPrep() {
+        $('.tarot-actions, .new-reading-buttons').hide();
+        $('.tarot-results-container').addClass('print-mode');
+        window.print();
+        $('.tarot-actions, .new-reading-buttons').show();
+        $('.tarot-results-container').removeClass('print-mode');
+    }
+    
+    // Yazdır butonuna basıldığında sayfayı yazdırma için hazırla
+    $('.print-reading-button').on('click', function() {
+        printReadingPrep();
+    });
+    
+    // URL parametrelerini kontrol et (geçmiş falları görüntülemek için)
+    const urlParams = new URLSearchParams(window.location.search);
+    const historyReadingId = urlParams.get('history_id');
+    
+    // Geçmiş fal ID'si varsa, o falı görüntüle
+    if (historyReadingId) {
+        loadHistoryReading(historyReadingId);
+    }
+    
+    // Geçmiş tarot falını yükle
+    function loadHistoryReading(readingId) {
+        showLoadingAnimation();
+        
+        $.ajax({
+            url: ai_tarot_vars.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'get_history_reading',
+                reading_id: readingId,
+                nonce: ai_tarot_vars.nonce
+            },
+            success: function(response) {
+                hideLoadingAnimation();
+                
+                if (response.success) {
+                    // Mevcut içeriği temizle
+                    $('#tarot-form-container').hide();
+                    $('#reading-area').empty();
+                    
+                    // Sonuç şablonunu ekle
+                    $('#interpretation-area').html(response.data.html).show();
+                } else {
+                    showMessage(response.data, 'error');
+                }
+            },
+            error: function() {
+                hideLoadingAnimation();
+                showMessage(ai_tarot_vars.error_text, 'error');
+            }
+        });
+    }
+
+    
 });

@@ -5,7 +5,210 @@
  */
 
 /* Ana konteyner */
-.ai-tarot-container {
+.ai-tarot-theme-dark .ai-tarot-modal-close:hover,
+.ai-tarot-theme-mystic .ai-tarot-modal-close:hover {
+    color: #b78ae5;
+}
+
+/* Duyarlı tasarım için medya sorguları */
+@media screen and (max-width: 768px) {
+    /* Ana başlık */
+    .tarot-form-title {
+        font-size: 2em;
+    }
+    
+    /* Açılım pozisyonları - Mobil uyumlu */
+    .three-card-spread .position-0,
+    .three-card-spread .position-1,
+    .three-card-spread .position-2 {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin: 0 auto 50px;
+        display: block;
+    }
+    
+    /* Kelt Haçı ve Astrolojik Açılım pozisyonları */
+    .celtic-cross-spread,
+    .astrological-spread {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+        min-height: auto;
+        padding: 30px 10px;
+    }
+    
+    .celtic-cross-spread .card-position,
+    .astrological-spread .card-position {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-bottom: 20px;
+    }
+    
+    /* Paylaşım düğmeleri */
+    .share-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .share-button, .save-button {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+}
+
+/* Görsel iyileştirmeler */
+/* Hafif gölgeler */
+.reading-area, 
+.interpretation-area,
+.tarot-form {
+    transition: box-shadow 0.3s ease;
+}
+
+.reading-area:hover, 
+.interpretation-area:hover,
+.tarot-form:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.ai-tarot-theme-dark .reading-area:hover,
+.ai-tarot-theme-dark .interpretation-area:hover,
+.ai-tarot-theme-dark .tarot-form:hover,
+.ai-tarot-theme-mystic .reading-area:hover,
+.ai-tarot-theme-mystic .interpretation-area:hover,
+.ai-tarot-theme-mystic .tarot-form:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Kart hover efektleri */
+.tarot-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(90, 60, 110, 0.3);
+}
+
+.tarot-card.reversed:hover {
+    transform: translateY(-5px) rotate(180deg);
+}
+
+/* Kart animasyonları */
+@keyframes cardFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.card-position:hover .tarot-card {
+    animation: cardFloat 2s ease-in-out infinite;
+}
+
+/* Okuma tamamlandığında arka plan efekti */
+.reading-active {
+    position: relative;
+}
+
+.reading-active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(90, 60, 110, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.ai-tarot-theme-mystic .reading-active::before {
+    background: radial-gradient(circle at center, rgba(183, 138, 229, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+/* Yazı tipi iyileştirmeleri */
+.interpretation-content {
+    font-family: 'Georgia', serif;
+}
+
+.interpretation-content strong {
+    color: #5a3c6e;
+}
+
+.ai-tarot-theme-dark .interpretation-content strong,
+.ai-tarot-theme-mystic .interpretation-content strong {
+    color: #b78ae5;
+}
+
+/* Tarot kartları yazdırma stilleri */
+@media print {
+    .tarot-form-container,
+    .tarot-submit-button,
+    .share-buttons,
+    .new-reading-button,
+    .tarot-loader {
+        display: none !important;
+    }
+    
+    .ai-tarot-container {
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .reading-area,
+    .interpretation-area {
+        background: none;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+    
+    .card-position {
+        page-break-inside: avoid;
+    }
+}
+
+/* Erişilebilirlik iyileştirmeleri */
+.tarot-submit-button:focus,
+.share-button:focus,
+.save-button:focus,
+.new-reading-button:focus {
+    outline: 3px solid rgba(90, 60, 110, 0.5);
+    outline-offset: 2px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 3px solid rgba(90, 60, 110, 0.5);
+    outline-offset: 2px;
+}
+
+/* Karanlık tema için odaklanma stilleri */
+.ai-tarot-theme-dark .tarot-submit-button:focus,
+.ai-tarot-theme-dark .share-button:focus,
+.ai-tarot-theme-dark .save-button:focus,
+.ai-tarot-theme-dark .new-reading-button:focus,
+.ai-tarot-theme-dark .form-group input:focus,
+.ai-tarot-theme-dark .form-group select:focus,
+.ai-tarot-theme-dark .form-group textarea:focus,
+.ai-tarot-theme-mystic .tarot-submit-button:focus,
+.ai-tarot-theme-mystic .share-button:focus,
+.ai-tarot-theme-mystic .save-button:focus,
+.ai-tarot-theme-mystic .new-reading-button:focus,
+.ai-tarot-theme-mystic .form-group input:focus,
+.ai-tarot-theme-mystic .form-group select:focus,
+.ai-tarot-theme-mystic .form-group textarea:focus {
+    outline: 3px solid rgba(183, 138, 229, 0.5);
+}-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -403,4 +606,1283 @@
 /* Ters kart */
 .tarot-card.reversed img {
     transform: rotate(180deg);
+}
+
+/* Açılımlara özel stil tanımlamaları */
+/* Üç Kartlık Açılım */
+.three-card-spread .position-0 {
+    left: calc(50% - 190px);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.three-card-spread .position-1 {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.three-card-spread .position-2 {
+    right: calc(50% - 190px);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Kelt Haçı Açılımı */
+.celtic-cross-spread {
+    min-height: 600px;
+}
+
+.celtic-cross-spread .position-0 {
+    left: calc(50% - 65px);
+    top: calc(50% - 100px);
+}
+
+.celtic-cross-spread .position-1 {
+    left: calc(50% - 65px);
+    top: calc(50% - 100px);
+    transform: rotate(90deg);
+}
+
+.celtic-cross-spread .position-2 {
+    left: calc(50% - 65px);
+    top: calc(50% + 120px);
+}
+
+.celtic-cross-spread .position-3 {
+    left: calc(50% - 200px);
+    top: calc(50% - 100px);
+}
+
+.celtic-cross-spread .position-4 {
+    left: calc(50% - 65px);
+    top: calc(50% - 320px);
+}
+
+.celtic-cross-spread .position-5 {
+    left: calc(50% + 70px);
+    top: calc(50% - 100px);
+}
+
+.celtic-cross-spread .position-6 {
+    right: 50px;
+    top: calc(50% - 300px);
+}
+
+.celtic-cross-spread .position-7 {
+    right: 50px;
+    top: calc(50% - 180px);
+}
+
+.celtic-cross-spread .position-8 {
+    right: 50px;
+    top: calc(50% - 60px);
+}
+
+.celtic-cross-spread .position-9 {
+    right: 50px;
+    top: calc(50% + 60px);
+}
+
+/* Astrolojik Açılım */
+.astrological-spread {
+    min-height: 700px;
+}
+
+.astrological-spread .card-position {
+    width: 90px;
+    height: 150px;
+}
+
+.astrological-spread .position-0 {
+    left: calc(50% - 45px);
+    top: calc(50% - 230px);
+}
+
+.astrological-spread .position-1 {
+    left: calc(50% + 100px);
+    top: calc(50% - 180px);
+}
+
+.astrological-spread .position-2 {
+    left: calc(50% + 190px);
+    top: calc(50% - 75px);
+}
+
+.astrological-spread .position-3 {
+    left: calc(50% + 220px);
+    top: calc(50% + 50px);
+}
+
+.astrological-spread .position-4 {
+    left: calc(50% + 190px);
+    top: calc(50% + 175px);
+}
+
+.astrological-spread .position-5 {
+    left: calc(50% + 100px);
+    top: calc(50% + 280px);
+}
+
+.astrological-spread .position-6 {
+    left: calc(50% - 45px);
+    top: calc(50% + 330px);
+}
+
+.astrological-spread .position-7 {
+    left: calc(50% - 190px);
+    top: calc(50% + 280px);
+}
+
+.astrological-spread .position-8 {
+    left: calc(50% - 280px);
+    top: calc(50% + 175px);
+}
+
+.astrological-spread .position-9 {
+    left: calc(50% - 310px);
+    top: calc(50% + 50px);
+}
+
+.astrological-spread .position-10 {
+    left: calc(50% - 280px);
+    top: calc(50% - 75px);
+}
+
+.astrological-spread .position-11 {
+    left: calc(50% - 190px);
+    top: calc(50% - 180px);
+}
+
+/* Kart isim etiketi */
+.card-name {
+    position: absolute;
+    bottom: -35px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: #5a3c6e;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 3px 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ai-tarot-theme-dark .card-name {
+    color: #b78ae5;
+    background: rgba(45, 45, 63, 0.8);
+}
+
+.ai-tarot-theme-mystic .card-name {
+    color: #e4d5ff;
+    background: rgba(26, 11, 46, 0.8);
+}
+
+/* Yorum alanı stilleri */
+.interpretation-area {
+    display: none;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    line-height: 1.7;
+}
+
+.ai-tarot-theme-dark .interpretation-area {
+    background: rgba(45, 45, 63, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ai-tarot-theme-mystic .interpretation-area {
+    background: rgba(26, 11, 46, 0.9);
+    box-shadow: 0 0 30px rgba(183, 138, 229, 0.3);
+    border: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+/* Yorum başlığı */
+.interpretation-title {
+    font-size: 2em;
+    color: #5a3c6e;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+}
+
+.ai-tarot-theme-dark .interpretation-title,
+.ai-tarot-theme-mystic .interpretation-title {
+    color: #b78ae5;
+}
+
+/* AI servisi bilgisi */
+.ai-service-info {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.ai-tarot-theme-dark .ai-service-info,
+.ai-tarot-theme-mystic .ai-service-info {
+    color: #9a9ab8;
+}
+
+.ai-service-info strong {
+    color: #5a3c6e;
+}
+
+.ai-tarot-theme-dark .ai-service-info strong,
+.ai-tarot-theme-mystic .ai-service-info strong {
+    color: #b78ae5;
+}
+
+/* Yorum içeriği */
+.interpretation-content {
+    margin-bottom: 30px;
+}
+
+.interpretation-content p {
+    margin-bottom: 15px;
+}
+
+.ai-tarot-theme-dark .interpretation-content,
+.ai-tarot-theme-mystic .interpretation-content {
+    color: #e0e0e0;
+}
+
+/* Paylaşım düğmeleri */
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.share-button, .save-button, .new-reading-button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.share-button {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.ai-tarot-theme-dark .share-button,
+.ai-tarot-theme-mystic .share-button {
+    background-color: #3a3a52;
+    color: #e0e0e0;
+}
+
+.share-button:hover {
+    background-color: #e5e5e5;
+    transform: translateY(-2px);
+}
+
+.ai-tarot-theme-dark .share-button:hover,
+.ai-tarot-theme-mystic .share-button:hover {
+    background-color: #4a4a6a;
+}
+
+.share-button.facebook {
+    background-color: #3b5998;
+    color: white;
+}
+
+.share-button.twitter {
+    background-color: #1da1f2;
+    color: white;
+}
+
+.share-button.email {
+    background-color: #d44638;
+    color: white;
+}
+
+.save-button {
+    background: linear-gradient(135deg, #8a65a7 0%, #5a3c6e 100%);
+    color: white;
+    box-shadow: 0 4px 10px rgba(90, 60, 110, 0.3);
+}
+
+.ai-tarot-theme-dark .save-button,
+.ai-tarot-theme-mystic .save-button {
+    background: linear-gradient(135deg, #9553d8 0%, #5a3c9a 100%);
+    box-shadow: 0 4px 10px rgba(149, 83, 216, 0.3);
+}
+
+.save-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(90, 60, 110, 0.4);
+}
+
+.ai-tarot-theme-dark .save-button:hover,
+.ai-tarot-theme-mystic .save-button:hover {
+    box-shadow: 0 6px 15px rgba(149, 83, 216, 0.4);
+}
+
+.new-reading-button {
+    background-color: #f0f0f0;
+    color: #444;
+    border: 1px solid #ddd;
+    display: block;
+    margin: 20px auto;
+}
+
+.ai-tarot-theme-dark .new-reading-button,
+.ai-tarot-theme-mystic .new-reading-button {
+    background-color: #2d2d3f;
+    color: #b9b9d0;
+    border: 1px solid #4a4a6a;
+}
+
+.new-reading-button:hover {
+    background-color: #e5e5e5;
+    transform: translateY(-2px);
+}
+
+.ai-tarot-theme-dark .new-reading-button:hover,
+.ai-tarot-theme-mystic .new-reading-button:hover {
+    background-color: #3a3a52;
+}
+
+/* Mesaj stilleri */
+.tarot-messages {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 80%;
+    max-width: 600px;
+}
+
+.tarot-message {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    animation: fadeInDown 0.5s;
+}
+
+.tarot-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.tarot-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.tarot-message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal stilleri */
+.ai-tarot-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-tarot-modal-content {
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ai-tarot-theme-dark .ai-tarot-modal-content,
+.ai-tarot-theme-mystic .ai-tarot-modal-content {
+    background: #1e1e2e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ai-tarot-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.ai-tarot-modal-close:hover {
+    color: #555;
+}
+
+.ai-tarot-theme-dark .ai-tarot-modal-close,
+.ai-tarot-theme-mystic .ai-tarot-modal-close {
+    color: #9a9ab8;
+}
+
+/* Açılım bilgileri bölümü stilleri */
+.spread-info-container {
+    margin-top: 40px;
+    border-top: 1px solid rgba(90, 60, 110, 0.2);
+    padding-top: 20px;
+}
+
+.ai-tarot-theme-dark .spread-info-container {
+    border-top: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+.spread-info {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    display: none;
+}
+
+.ai-tarot-theme-dark .spread-info {
+    background: rgba(45, 45, 63, 0.8);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ai-tarot-theme-mystic .spread-info {
+    background: rgba(26, 11, 46, 0.8);
+    box-shadow: 0 0 20px rgba(183, 138, 229, 0.3);
+    border: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+.spread-info h3 {
+    color: #5a3c6e;
+    margin-top: 0;
+}
+
+.ai-tarot-theme-dark .spread-info h3,
+.ai-tarot-theme-mystic .spread-info h3 {
+    color: #b78ae5;
+}
+
+.spread-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.spread-info ul li {
+    padding: 5px 0;
+    border-bottom: 1px dashed rgba(90, 60, 110, 0.1);
+}
+
+.ai-tarot-theme-dark .spread-info ul li,
+.ai-tarot-theme-mystic .spread-info ul li {
+    border-bottom: 1px dashed rgba(183, 138, 229, 0.1);
+}
+
+.spread-info ul li:last-child {
+    border-bottom: none;
+}
+
+.toggle-info-button {
+    background: transparent;
+    border: 1px solid #8a65a7;
+    color: #5a3c6e;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 10px auto;
+}
+
+.toggle-info-button:hover {
+    background: rgba(138, 101, 167, 0.1);
+}
+
+.ai-tarot-theme-dark .toggle-info-button,
+.ai-tarot-theme-mystic .toggle-info-button {
+    border: 1px solid #b78ae5;
+    color: #b78ae5;
+}
+
+.ai-tarot-theme-dark .toggle-info-button:hover,
+.ai-tarot-theme-mystic .toggle-info-button:hover {
+    background: rgba(183, 138, 229, 0.1);
+}
+
+.login-prompt {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(90, 60, 110, 0.1);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.ai-tarot-theme-dark .login-prompt,
+.ai-tarot-theme-mystic .login-prompt {
+    background: rgba(183, 138, 229, 0.1);
+}
+
+.animation-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animation-toggle label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.animation-toggle input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .spread-info ul li {
+        padding: 8px 0;
+    }
+}
+
+/* Tarot Sonuçları Stilleri */
+.tarot-results-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 40px auto;
+}
+
+.ai-tarot-theme-dark .tarot-results-container {
+    background: rgba(45, 45, 63, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ai-tarot-theme-mystic .tarot-results-container {
+    background: rgba(26, 11, 46, 0.9);
+    box-shadow: 0 0 30px rgba(183, 138, 229, 0.3);
+    border: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+/* Sonuç başlığı */
+.results-title {
+    font-size: 2.2em;
+    text-align: center;
+    color: #5a3c6e;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.ai-tarot-theme-dark .results-title,
+.ai-tarot-theme-mystic .results-title {
+    color: #b78ae5;
+}
+
+/* Sonuç meta bilgileri */
+.results-meta {
+    background: rgba(90, 60, 110, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ai-tarot-theme-dark .results-meta,
+.ai-tarot-theme-mystic .results-meta {
+    background: rgba(183, 138, 229, 0.1);
+}
+
+.result-question, .result-spread-type, .result-date {
+    flex: 1;
+    min-width: 200px;
+}
+
+.meta-label {
+    font-weight: 600;
+    color: #5a3c6e;
+    margin-right: 5px;
+}
+
+.ai-tarot-theme-dark .meta-label,
+.ai-tarot-theme-mystic .meta-label {
+    color: #b78ae5;
+}
+
+/* Kartlar gösterimi */
+.tarot-cards-display {
+    margin-bottom: 40px;
+}
+
+.tarot-cards-display h3 {
+    color: #5a3c6e;
+    border-bottom: 1px solid rgba(90, 60, 110, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.ai-tarot-theme-dark .tarot-cards-display h3,
+.ai-tarot-theme-mystic .tarot-cards-display h3 {
+    color: #b78ae5;
+    border-bottom: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Üç kartlık düzen */
+.spread-three_card .cards-container {
+    justify-content: space-around;
+}
+
+/* Kelt haçı düzeni */
+.spread-celtic_cross .cards-container {
+    position: relative;
+    min-height: 600px;
+    display: block;
+}
+
+.spread-celtic_cross .card-box {
+    position: absolute;
+}
+
+.spread-celtic_cross .card-box[data-position="0"] {
+    left: calc(50% - 75px);
+    top: 200px;
+}
+
+.spread-celtic_cross .card-box[data-position="1"] {
+    left: calc(50% - 75px);
+    top: 200px;
+    transform: rotate(90deg);
+}
+
+.spread-celtic_cross .card-box[data-position="2"] {
+    left: calc(50% - 75px);
+    top: 400px;
+}
+
+.spread-celtic_cross .card-box[data-position="3"] {
+    left: calc(50% - 240px);
+    top: 200px;
+}
+
+.spread-celtic_cross .card-box[data-position="4"] {
+    left: calc(50% - 75px);
+    top: 0;
+}
+
+.spread-celtic_cross .card-box[data-position="5"] {
+    left: calc(50% + 90px);
+    top: 200px;
+}
+
+.spread-celtic_cross .card-box[data-position="6"] {
+    right: 50px;
+    top: 0;
+}
+
+.spread-celtic_cross .card-box[data-position="7"] {
+    right: 50px;
+    top: 150px;
+}
+
+.spread-celtic_cross .card-box[data-position="8"] {
+    right: 50px;
+    top: 300px;
+}
+
+.spread-celtic_cross .card-box[data-position="9"] {
+    right: 50px;
+    top: 450px;
+}
+
+/* Astrolojik düzen */
+.spread-astrological .cards-container {
+    position: relative;
+    min-height: 700px;
+    display: block;
+}
+
+.spread-astrological .card-box {
+    position: absolute;
+    transform-origin: center center;
+}
+
+/* Astrolojik açılım için 12 pozisyon
+   (Bu pozisyonlar daire şeklinde yerleştirilecek) */
+.spread-astrological .card-box[data-position="0"] {
+    left: calc(50% - 75px);
+    top: 10px;
+    transform: rotate(0deg);
+}
+
+.spread-astrological .card-box[data-position="1"] {
+    left: calc(50% + 120px);
+    top: 60px;
+    transform: rotate(30deg);
+}
+
+.spread-astrological .card-box[data-position="2"] {
+    left: calc(50% + 240px);
+    top: 170px;
+    transform: rotate(60deg);
+}
+
+.spread-astrological .card-box[data-position="3"] {
+    left: calc(50% + 290px);
+    top: 320px;
+    transform: rotate(90deg);
+}
+
+.spread-astrological .card-box[data-position="4"] {
+    left: calc(50% + 240px);
+    top: 470px;
+    transform: rotate(120deg);
+}
+
+.spread-astrological .card-box[data-position="5"] {
+    left: calc(50% + 120px);
+    top: 580px;
+    transform: rotate(150deg);
+}
+
+.spread-astrological .card-box[data-position="6"] {
+    left: calc(50% - 75px);
+    top: 630px;
+    transform: rotate(180deg);
+}
+
+.spread-astrological .card-box[data-position="7"] {
+    left: calc(50% - 270px);
+    top: 580px;
+    transform: rotate(210deg);
+}
+
+.spread-astrological .card-box[data-position="8"] {
+    left: calc(50% - 390px);
+    top: 470px;
+    transform: rotate(240deg);
+}
+
+.spread-astrological .card-box[data-position="9"] {
+    left: calc(50% - 440px);
+    top: 320px;
+    transform: rotate(270deg);
+}
+
+.spread-astrological .card-box[data-position="10"] {
+    left: calc(50% - 390px);
+    top: 170px;
+    transform: rotate(300deg);
+}
+
+.spread-astrological .card-box[data-position="11"] {
+    left: calc(50% - 270px);
+    top: 60px;
+    transform: rotate(330deg);
+}
+
+/* Kart kutusu */
+.card-box {
+    width: 150px;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card-image-container {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-tarot-theme-dark .card-image-container,
+.ai-tarot-theme-mystic .card-image-container {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Ters kart */
+.card-image-container.reversed img {
+    transform: rotate(180deg);
+}
+
+/* Kart hover efekti */
+.card-box.card-hover .card-image-container {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(90, 60, 110, 0.3);
+}
+
+.ai-tarot-theme-dark .card-box.card-hover .card-image-container,
+.ai-tarot-theme-mystic .card-box.card-hover .card-image-container {
+    box-shadow: 0 15px 30px rgba(183, 138, 229, 0.3);
+}
+
+/* Kart detayları */
+.card-details {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    max-height: 50px;
+    overflow: hidden;
+}
+
+.ai-tarot-theme-dark .card-details {
+    background: rgba(45, 45, 63, 0.8);
+}
+
+.ai-tarot-theme-mystic .card-details {
+    background: rgba(26, 11, 46, 0.8);
+}
+
+/* Genişletilmiş kart */
+.card-box.expanded .card-details {
+    max-height: 500px;
+    overflow: auto;
+}
+
+.card-title {
+    font-size: 1em;
+    font-weight: 700;
+    color: #5a3c6e;
+    margin: 0 0 5px;
+    text-align: center;
+}
+
+.ai-tarot-theme-dark .card-title,
+.ai-tarot-theme-mystic .card-title {
+    color: #b78ae5;
+}
+
+.card-position {
+    font-size: 0.8em;
+    color: #777;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.ai-tarot-theme-dark .card-position,
+.ai-tarot-theme-mystic .card-position {
+    color: #9a9ab8;
+}
+
+.card-keywords, .card-meaning {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(90, 60, 110, 0.2);
+}
+
+.ai-tarot-theme-dark .card-keywords,
+.ai-tarot-theme-dark .card-meaning,
+.ai-tarot-theme-mystic .card-keywords,
+.ai-tarot-theme-mystic .card-meaning {
+    border-top: 1px dashed rgba(183, 138, 229, 0.2);
+}
+
+.card-box.expanded .card-keywords,
+.card-box.expanded .card-meaning {
+    display: block;
+}
+
+.keywords-label {
+    font-weight: 600;
+    color: #5a3c6e;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ai-tarot-theme-dark .keywords-label,
+.ai-tarot-theme-mystic .keywords-label {
+    color: #b78ae5;
+}
+
+/* Yorum alanı */
+.tarot-interpretation {
+    margin-bottom: 40px;
+}
+
+.tarot-interpretation h3 {
+    color: #5a3c6e;
+    border-bottom: 1px solid rgba(90, 60, 110, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.ai-tarot-theme-dark .tarot-interpretation h3,
+.ai-tarot-theme-mystic .tarot-interpretation h3 {
+    color: #b78ae5;
+    border-bottom: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+.ai-service-info {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.ai-tarot-theme-dark .ai-service-info,
+.ai-tarot-theme-mystic .ai-service-info {
+    color: #9a9ab8;
+}
+
+.interpretation-content {
+    line-height: 1.7;
+    color: #444;
+    font-family: 'Georgia', serif;
+}
+
+.ai-tarot-theme-dark .interpretation-content,
+.ai-tarot-theme-mystic .interpretation-content {
+    color: #e0e0e0;
+}
+
+.interpretation-content p {
+    margin-bottom: 15px;
+}
+
+/* Aksiyon düğmeleri */
+.tarot-actions {
+    margin-top: 40px;
+    border-top: 1px solid rgba(90, 60, 110, 0.2);
+    padding-top: 20px;
+}
+
+.ai-tarot-theme-dark .tarot-actions,
+.ai-tarot-theme-mystic .tarot-actions {
+    border-top: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.save-reading-button, 
+.print-reading-button,
+.login-to-save-button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    background: linear-gradient(135deg, #8a65a7 0%, #5a3c6e 100%);
+    color: white;
+    box-shadow: 0 4px 10px rgba(90, 60, 110, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.ai-tarot-theme-dark .save-reading-button,
+.ai-tarot-theme-dark .print-reading-button,
+.ai-tarot-theme-dark .login-to-save-button,
+.ai-tarot-theme-mystic .save-reading-button,
+.ai-tarot-theme-mystic .print-reading-button,/* Tarot Sonuçları Stilleri */
+.tarot-results-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 40px auto;
+}
+
+.ai-tarot-theme-dark .tarot-results-container {
+    background: rgba(45, 45, 63, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ai-tarot-theme-mystic .tarot-results-container {
+    background: rgba(26, 11, 46, 0.9);
+    box-shadow: 0 0 30px rgba(183, 138, 229, 0.3);
+    border: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+/* Sonuç başlığı */
+.results-title {
+    font-size: 2.2em;
+    text-align: center;
+    color: #5a3c6e;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.ai-tarot-theme-dark .results-title,
+.ai-tarot-theme-mystic .results-title {
+    color: #b78ae5;
+}
+
+/* Sonuç meta bilgileri */
+.results-meta {
+    background: rgba(90, 60, 110, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ai-tarot-theme-dark .results-meta,
+.ai-tarot-theme-mystic .results-meta {
+    background: rgba(183, 138, 229, 0.1);
+}
+
+.result-question, .result-spread-type, .result-date {
+    flex: 1;
+    min-width: 200px;
+}
+
+.meta-label {
+    font-weight: 600;
+    color: #5a3c6e;
+    margin-right: 5px;
+}
+
+.ai-tarot-theme-dark .meta-label,
+.ai-tarot-theme-mystic .meta-label {
+    color: #b78ae5;
+}
+
+/* Kartlar gösterimi */
+.tarot-cards-display {
+    margin-bottom: 40px;
+}
+
+.tarot-cards-display h3 {
+    color: #5a3c6e;
+    border-bottom: 1px solid rgba(90, 60, 110, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.ai-tarot-theme-dark .tarot-cards-display h3,
+.ai-tarot-theme-mystic .tarot-cards-display h3 {
+    color: #b78ae5;
+    border-bottom: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Üç kartlık düzen */
+.spread-three_card .cards-container {
+    justify-content: space-around;
+}
+
+/* Kelt haçı düzeni */
+.spread-celtic_cross .cards-container {
+    position: relative;
+    min-height: 600px;
+    display: block;
+}
+
+.spread-celtic_cross .card-box {
+    position: absolute;
+}
+
+.spread-celtic_cross .card-box[data-position="0"] {
+    left: calc(50% - 75px);
+    top: 200px;
+}
+
+.spread-celtic_cross .card-box[data-position="1"] {
+    left: calc(50% - 75px);
+    top: 200px;
+    transform: rotate(90deg);
+}
+
+.spread-celtic_cross .card-box[data-position="2"] {
+    left: calc(50% - 75px);
+    top: 400px;
+}
+
+.spread-celtic_cross .card-box[data-position="3"] {
+    left: calc(50% - 240px);
+    top: 200px;
+}
+
+.spread-celtic_cross .card-box[data-position="4"] {
+    left: calc(50% - 75px);
+    top: 0;
+}
+
+.spread-celtic_cross .card-box[data-position="5"] {
+    left: calc(50% + 90px);
+    top: 200px;
+}
+
+.spread-celtic_cross .card-box[data-position="6"] {
+    right: 50px;
+    top: 0;
+}
+
+.spread-celtic_cross .card-box[data-position="7"] {
+    right: 50px;
+    top: 150px;
+}
+
+.spread-celtic_cross .card-box[data-position="8"] {
+    right: 50px;
+    top: 300px;
+}
+
+.spread-celtic_cross .card-box[data-position="9"] {
+    right: 50px;
+    top: 450px;
+}
+
+/* Astrolojik düzen */
+.spread-astrological .cards-container {
+    position: relative;
+    min-height: 700px;
+    display: block;
+}
+
+.spread-astrological .card-box {
+    position: absolute;
+    transform-origin: center center;
+}
+
+/* Astrolojik açılım için 12 pozisyon
+   (Bu pozisyonlar daire şeklinde yerleştirilecek) */
+.spread-astrological .card-box[data-position="0"] {
+    left: calc(50% - 75px);
+    top: 10px;
+    transform: rotate(0deg);
+}
+
+.spread-astrological .card-box[data-position="1"] {
+    left: calc(50% + 120px);
+    top: 60px;
+    transform: rotate(30deg);
+}
+
+.spread-astrological .card-box[data-position="2"] {
+    left: calc(50% + 240px);
+    top: 170px;
+    transform: rotate(60deg);
+}
+
+.spread-astrological .card-box[data-position="3"] {
+    left: calc(50% + 290px);
+    top: 320px;
+    transform: rotate(90deg);
+}
+
+.spread-astrological .card-box[data-position="4"] {
+    left: calc(50% + 240px);
+    top: 470px;
+    transform: rotate(120deg);
+}
+
+.spread-astrological .card-box[data-position="5"] {
+    left: calc(50% + 120px);
+    top: 580px;
+    transform: rotate(150deg);
+}
+
+.spread-astrological .card-box[data-position="6"] {
+    left: calc(50% - 75px);
+    top: 630px;
+    transform: rotate(180deg);
+}
+
+.spread-astrological .card-box[data-position="7"] {
+    left: calc(50% - 270px);
+    top: 580px;
+    transform: rotate(210deg);
+}
+
+.spread-astrological .card-box[data-position="8"] {
+    left: calc(50% - 390px);
+    top: 470px;
+    transform: rotate(240deg);
+}
+
+.spread-astrological .card-box[data-position="9"] {
+    left: calc(50% - 440px);
+    top: 320px;
+    transform: rotate(270deg);
+}
+
+.spread-astrological .card-box[data-position="10"] {
+    left: calc(50% - 390px);
+    top: 170px;
+    transform: rotate(300deg);
+}
+
+.spread-astrological .card-box[data-position="11"] {
+    left: calc(50% - 270px);
+    top: 60px;
+    transform: rotate(330deg);
 }
