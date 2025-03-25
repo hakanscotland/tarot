@@ -1,0 +1,406 @@
+/**
+ * AI Tarot Frontend Styles
+ * 
+ * Tarot falı frontend stil tanımlamaları
+ */
+
+/* Ana konteyner */
+.ai-tarot-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f8f6f0;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Tema stilleri */
+.ai-tarot-theme-light {
+    background-color: #f8f6f0;
+    color: #333;
+}
+
+.ai-tarot-theme-dark {
+    background-color: #1e1e2e;
+    color: #e0e0e0;
+}
+
+.ai-tarot-theme-mystic {
+    background-color: #1a0b2e;
+    color: #e4d5ff;
+    background-image: url('../images/backgrounds/mystic-bg.jpg');
+    background-size: cover;
+    background-blend-mode: overlay;
+}
+
+/* Formun genişliği ve hizalama için */
+.tarot-form-container {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+/* Form başlığı */
+.tarot-form-title {
+    font-size: 2.5em;
+    color: #5a3c6e;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    font-family: 'Playfair Display', serif;
+}
+
+.ai-tarot-theme-dark .tarot-form-title,
+.ai-tarot-theme-mystic .tarot-form-title {
+    color: #b78ae5;
+    text-shadow: 0 0 10px rgba(183, 138, 229, 0.5);
+}
+
+/* Form açıklaması */
+.tarot-form-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.ai-tarot-theme-dark .tarot-form-description,
+.ai-tarot-theme-mystic .tarot-form-description {
+    color: #b9b9d0;
+}
+
+/* Form alanları */
+.tarot-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.ai-tarot-theme-dark .tarot-form {
+    background: #2d2d3f;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ai-tarot-theme-mystic .tarot-form {
+    background: rgba(26, 11, 46, 0.8);
+    box-shadow: 0 0 20px rgba(183, 138, 229, 0.3);
+    border: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+/* Form grupları */
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* Etiketler */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #5a3c6e;
+    font-size: 1.1em;
+}
+
+.ai-tarot-theme-dark .form-group label,
+.ai-tarot-theme-mystic .form-group label {
+    color: #b78ae5;
+}
+
+/* Metin alanı */
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.ai-tarot-theme-dark .form-group input[type="text"],
+.ai-tarot-theme-dark .form-group textarea,
+.ai-tarot-theme-mystic .form-group input[type="text"],
+.ai-tarot-theme-mystic .form-group textarea {
+    background: rgba(45, 45, 63, 0.8);
+    border: 1px solid #4a4a6a;
+    color: #e0e0e0;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: #8a65a7;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(138, 101, 167, 0.2);
+}
+
+.ai-tarot-theme-dark .form-group input[type="text"]:focus,
+.ai-tarot-theme-dark .form-group textarea:focus,
+.ai-tarot-theme-mystic .form-group input[type="text"]:focus,
+.ai-tarot-theme-mystic .form-group textarea:focus {
+    border-color: #b78ae5;
+    box-shadow: 0 0 0 3px rgba(183, 138, 229, 0.2);
+}
+
+/* Seçim kutusu */
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #fff;
+    color: #444;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%235a3c6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    transition: border-color 0.3s;
+}
+
+.ai-tarot-theme-dark .form-group select,
+.ai-tarot-theme-mystic .form-group select {
+    background-color: rgba(45, 45, 63, 0.8);
+    border: 1px solid #4a4a6a;
+    color: #e0e0e0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23b78ae5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+}
+
+.form-group select:focus {
+    border-color: #8a65a7;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(138, 101, 167, 0.2);
+}
+
+.ai-tarot-theme-dark .form-group select:focus,
+.ai-tarot-theme-mystic .form-group select:focus {
+    border-color: #b78ae5;
+    box-shadow: 0 0 0 3px rgba(183, 138, 229, 0.2);
+}
+
+/* Gönder düğmesi */
+.tarot-submit-button {
+    background: linear-gradient(135deg, #8a65a7 0%, #5a3c6e 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(90, 60, 110, 0.3);
+}
+
+.ai-tarot-theme-dark .tarot-submit-button {
+    background: linear-gradient(135deg, #9553d8 0%, #5a3c9a 100%);
+    box-shadow: 0 4px 10px rgba(149, 83, 216, 0.3);
+}
+
+.ai-tarot-theme-mystic .tarot-submit-button {
+    background: linear-gradient(135deg, #b78ae5 0%, #583d8e 100%);
+    box-shadow: 0 4px 15px rgba(183, 138, 229, 0.4);
+}
+
+.tarot-submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(90, 60, 110, 0.4);
+}
+
+.tarot-submit-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(90, 60, 110, 0.3);
+}
+
+/* Yükleniyor animasyonu */
+.tarot-loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+.loader-spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+.ai-tarot-theme-mystic .loader-spinner {
+    border: 8px solid rgba(183, 138, 229, 0.3);
+    border-top-color: #b78ae5;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-text {
+    font-size: 1.2em;
+    margin-top: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Tarot kartları için stil */
+.reading-area {
+    display: none;
+    position: relative;
+    min-height: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.ai-tarot-theme-dark .reading-area {
+    background: rgba(45, 45, 63, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ai-tarot-theme-mystic .reading-area {
+    background: rgba(26, 11, 46, 0.8);
+    box-shadow: 0 0 30px rgba(183, 138, 229, 0.3);
+    border: 1px solid rgba(183, 138, 229, 0.2);
+}
+
+/* Kart destesi */
+.tarot-deck {
+    width: 120px;
+    height: 200px;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Deste karıştırma animasyonları */
+.tarot-deck.shuffle-1 {
+    transform: translate(-50%, -50%) rotate(5deg);
+}
+
+.tarot-deck.shuffle-2 {
+    transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.tarot-deck.shuffle-3 {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* Kart pozisyonları */
+.card-position {
+    position: absolute;
+    width: 120px;
+    height: 200px;
+    border: 2px dashed rgba(90, 60, 110, 0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5a3c6e;
+    font-size: 0.8em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.ai-tarot-theme-dark .card-position {
+    border: 2px dashed rgba(183, 138, 229, 0.3);
+    color: #b78ae5;
+}
+
+.ai-tarot-theme-mystic .card-position {
+    border: 2px dashed rgba(183, 138, 229, 0.4);
+    color: #b78ae5;
+}
+
+/* Pozisyon etiketleri */
+.position-label {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.75em;
+    color: #5a3c6e;
+    font-weight: 600;
+}
+
+.ai-tarot-theme-dark .position-label,
+.ai-tarot-theme-mystic .position-label {
+    color: #b78ae5;
+}
+
+/* Tarot kartı */
+.tarot-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.ai-tarot-theme-dark .tarot-card,
+.ai-tarot-theme-mystic .tarot-card {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Kart arka yüzü */
+.card-back {
+    background-size: cover;
+    border-radius: 10px;
+}
+
+/* Kart ön yüzü */
+.card-front {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Kart çevirme animasyonu */
+.tarot-card.flipping {
+    transform: rotateY(180deg);
+}
+
+/* Ters kart */
+.tarot-card.reversed img {
+    transform: rotate(180deg);
+}
